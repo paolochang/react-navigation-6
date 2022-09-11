@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#20315f",
     fontFamily: "Inter-Bold",
-    marginTop: 120,
+    marginTop: 100,
   },
   image: {
     transform: [{ rotate: "-15deg" }],
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 50,
+    marginBottom: 70,
   },
   buttonText: {
     fontWeight: "bold",
