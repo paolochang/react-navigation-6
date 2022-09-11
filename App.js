@@ -14,7 +14,11 @@ export default function App() {
           options={{ headerShown: false }}
           component={Main}
         />
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen
+          name="Home"
+          options={{ headerShown: false }}
+          component={Home}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

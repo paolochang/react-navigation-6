@@ -13,6 +13,7 @@ import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
 export default function Main({ navigation }) {
   let [fontsLoaded] = useFonts({
+    "Roboto-Medium": require("../../assets/fonts/Roboto-Medium.ttf"),
     "Roboto-MediumItalic": require("../../assets/fonts/Roboto-MediumItalic.ttf"),
     "Inter-Bold": require("../../assets/fonts/Inter-Bold.ttf"),
   });
