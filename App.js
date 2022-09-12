@@ -37,8 +37,8 @@ export default function App() {
 
   return (
     <NavigationContainer onReady={onLayoutRootView}>
-      <AppStack />
+      <AuthStack />
     </NavigationContainer>
   );
 }
-// <AuthStack />
+// <AppStack />
