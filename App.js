@@ -1,16 +1,19 @@
 import "react-native-gesture-handler";
 import { useCallback, useEffect } from "react";
+import { useColorScheme } from "react-native";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { View } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import {
+  DarkTheme,
+  DefaultTheme,
+  NavigationContainer,
+} from "@react-navigation/native";
 import AppStack from "./src/navigation/AppStack";
-import AuthStack from "./src/navigation/AuthStack";
-
-const Stack = createNativeStackNavigator();
+// import AuthStack from "./src/navigation/AuthStack";
 
 export default function App() {
+  const scheme = useColorScheme();
+
   let [fontsLoaded] = useFonts({
     "Roboto-Medium": require("./assets/fonts/Roboto-Medium.ttf"),
     "Roboto-MediumItalic": require("./assets/fonts/Roboto-MediumItalic.ttf"),
@@ -36,9 +39,13 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer onReady={onLayoutRootView}>
-      <AuthStack />
+    <NavigationContainer
+      theme={scheme === "dark" ? DarkTheme : DefaultTheme}
+      onReady={onLayoutRootView}
+    >
+      <AppStack />
     </NavigationContainer>
   );
 }
-// <AppStack />
+
+// <AuthStack />

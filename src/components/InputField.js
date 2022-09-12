@@ -6,6 +6,7 @@ import {
   View,
 } from "react-native";
 import React from "react";
+import { useTheme } from "@react-navigation/native";
 
 export default function InputField({
   label,
@@ -15,15 +16,18 @@ export default function InputField({
   fieldButtonLabel,
   fieldButtonFunction,
 }) {
+  const { colors } = useTheme();
+
   return (
-    <View style={styles.inputBlock}>
+    <View style={[styles.inputBlock, { borderBottomColor: colors.border }]}>
       {icon}
       {inputType == "password" ? (
         <TextInput
-          style={styles.input}
+          style={[styles.input, { color: colors.text }]}
           keyboardType={keyboardType}
           textContentType="oneTimeCode"
           placeholder={label}
+          placeholderTextColor={colors.text}
           secureTextEntry={true}
         />
       ) : (
@@ -31,10 +35,13 @@ export default function InputField({
           style={styles.input}
           keyboardType={keyboardType}
           placeholder={label}
+          placeholderTextColor={colors.text}
         />
       )}
       <TouchableOpacity onPress={fieldButtonFunction}>
-        <Text style={styles.fieldBtn}>{fieldButtonLabel}</Text>
+        <Text style={[styles.fieldBtn, { color: colors.text }]}>
+          {fieldButtonLabel}
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -43,7 +50,6 @@ export default function InputField({
 const styles = StyleSheet.create({
   inputBlock: {
     flexDirection: "row",
-    borderBottomColor: "#ccc",
     borderBottomWidth: 1,
     paddingBottom: 8,
     marginBottom: 25,
@@ -55,7 +61,7 @@ const styles = StyleSheet.create({
     paddingVertical: 0,
   },
   fieldBtn: {
-    color: "#ad40af",
+    // color: "#ad40af",
     fontWeight: "700",
   },
 });

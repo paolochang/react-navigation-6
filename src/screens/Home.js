@@ -16,9 +16,11 @@ import BannerSlider from "../components/BannerSlider";
 import { freeGames, paidGames, sliderData } from "../model/data";
 import CustomSwitch from "../components/CustomSwitch";
 import ListItem from "../components/ListItem";
+import { useTheme } from "@react-navigation/native";
 
 export default function Home({ navigation }) {
   const [gamesTab, setGamesTab] = useState(1);
+  const { colors } = useTheme();
 
   const renderBanner = ({ item, index }) => {
     return <BannerSlider data={item} />;
@@ -29,10 +31,12 @@ export default function Home({ navigation }) {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, { color: colors.background }]}>
       <ScrollView style={styles.wrapper}>
         <View style={styles.header}>
-          <Text style={styles.headerText}>Hello John Doe</Text>
+          <Text style={[styles.headerText, { color: colors.text }]}>
+            Hello John Doe
+          </Text>
           <TouchableOpacity onPress={() => navigation.openDrawer()}>
             <ImageBackground
               source={require("../../assets/images/user-profile.jpeg")}
@@ -51,7 +55,9 @@ export default function Home({ navigation }) {
           <TextInput placeholder="Search" style={styles.searchInput} />
         </View>
         <View style={styles.subHeader}>
-          <Text style={styles.headerText}>Upcoming Games</Text>
+          <Text style={[styles.headerText, { color: colors.text }]}>
+            Upcoming Games
+          </Text>
           <TouchableOpacity onPress={() => {}}>
             <Text style={styles.seeAllButton}>See all</Text>
           </TouchableOpacity>
@@ -108,7 +114,6 @@ export default function Home({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
   },
   wrapper: { padding: 20 },
   header: {

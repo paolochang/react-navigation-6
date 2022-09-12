@@ -5,21 +5,30 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { useTheme } from "@react-navigation/native";
 import GamingImg from "../../assets/gaming.svg";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
 export default function Onboarding({ navigation }) {
+  const { colors } = useTheme();
+
   return (
-    <SafeAreaView style={styles.container} /*onLayout={onLayoutRootView}*/>
+    <SafeAreaView
+      style={[styles.container, { backgroundColor: colors.background }]}
+    >
       <View>
-        <Text style={styles.title}>React Navigation 6</Text>
+        <Text style={[styles.title, { color: colors.text }]}>
+          React Navigation 6
+        </Text>
       </View>
       <GamingImg style={styles.image} width={300} height={300} />
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate("Login")}
       >
-        <Text style={styles.buttonText}>Let's Begin</Text>
+        <Text style={[styles.buttonText, { color: colors.text }]}>
+          Let's Begin
+        </Text>
         <MaterialIcons name="arrow-forward-ios" size={22} color="#fff" />
       </TouchableOpacity>
     </SafeAreaView>
@@ -33,12 +42,10 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-between",
-    backgroundColor: "#fff",
   },
   title: {
     fontSize: 26,
     fontWeight: "bold",
-    color: "#20315f",
     fontFamily: "Inter-Bold",
     marginTop: 100,
   },
@@ -57,7 +64,6 @@ const styles = StyleSheet.create({
   buttonText: {
     fontWeight: "bold",
     fontSize: 18,
-    color: "#fff",
     fontFamily: "Roboto-MediumItalic",
   },
 });

@@ -7,18 +7,20 @@ import Messages from "../screens/Messages";
 import Moments from "../screens/Moments";
 import Settings from "../screens/Settings";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { useTheme } from "@react-navigation/native";
 
 const Drawer = createDrawerNavigator();
 
 export default function AppStack() {
+  const { colors } = useTheme();
   return (
     <Drawer.Navigator
       drawerContent={(props) => <CustomDrawer {...props} />}
       screenOptions={{
         headerShown: false,
-        drawerActiveBackgroundColor: "#aa18ea",
-        drawerActiveTintColor: "#ffffff",
-        drawerInactiveTintColor: "#333",
+        drawerActiveBackgroundColor: colors.primary, // "#aa18ea",
+        drawerActiveTintColor: colors.text,
+        drawerInactiveTintColor: colors.text,
         drawerLabelStyle: { marginLeft: -20 },
       }}
     >

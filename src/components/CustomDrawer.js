@@ -13,13 +13,18 @@ import {
 } from "@react-navigation/drawer";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import { useTheme } from "@react-navigation/native";
 
 export default function CustomDrawer(props) {
+  const { colors } = useTheme();
   return (
     <View style={styles.container}>
       <DrawerContentScrollView
         {...props}
-        contentContainerStyle={styles.drawerContainer}
+        contentContainerStyle={[
+          // styles.drawerContainer,
+          { color: colors.background },
+        ]}
       >
         <ImageBackground
           style={styles.headerBackground}
@@ -29,27 +34,39 @@ export default function CustomDrawer(props) {
             style={styles.headerProfile}
             source={require("../../assets/images/user-profile.jpeg")}
           />
-          <Text style={styles.headerUsername}>John Doe</Text>
+          <Text style={[styles.headerUsername, { color: colors.text }]}>
+            John Doe
+          </Text>
           <View style={styles.coinsWrapper}>
             <FontAwesome5 name="coins" size={14} color="#fff" />
-            <Text style={styles.headerCoins}>280 Coins</Text>
+            <Text style={[styles.headerCoins, { color: colors.text }]}>
+              280 Coins
+            </Text>
           </View>
         </ImageBackground>
-        <View style={styles.itemlList}>
+        <View style={[styles.itemlList, { color: colors.background }]}>
           <DrawerItemList {...props} />
         </View>
       </DrawerContentScrollView>
-      <View style={styles.footerDrawer}>
+      <View style={[styles.footerDrawer, { borderTopColor: colors.border }]}>
         <TouchableOpacity onPress={() => {}} style={styles.footerItem}>
           <View style={styles.footerItemWrapper}>
-            <Ionicons name="share-social-outline" size={22} />
-            <Text style={styles.footerItemText}>Share this App</Text>
+            <Ionicons
+              name="share-social-outline"
+              size={22}
+              color={colors.text}
+            />
+            <Text style={[styles.footerItemText, { color: colors.text }]}>
+              Share this App
+            </Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {}} style={styles.footerItem}>
           <View style={styles.footerItemWrapper}>
-            <Ionicons name="exit-outline" size={22} />
-            <Text style={styles.footerItemText}>Sign Out</Text>
+            <Ionicons name="exit-outline" size={22} color={colors.text} />
+            <Text style={[styles.footerItemText, { color: colors.text }]}>
+              Sign Out
+            </Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -62,7 +79,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   drawerContainer: {
-    backgroundColor: "#8200d6",
+    // backgroundColor: "#8200d6",
   },
   headerBackground: {
     padding: 20,
@@ -74,7 +91,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   headerUsername: {
-    color: "#ffffff",
     fontSize: 18,
     fontFamily: "Roboto-Medium",
   },
@@ -83,19 +99,17 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   headerCoins: {
-    color: "#ffffff",
     fontFamily: "Roboto-Medium",
     marginLeft: 10,
   },
   itemlList: {
     flex: 1,
-    backgroundColor: "#ffffff",
+    // backgroundColor: "#ffffff",
     paddingTop: 10,
   },
   footerDrawer: {
     padding: 20,
     borderTopWidth: 1,
-    borderTopColor: "#ccc",
   },
   footerItem: {
     paddingVertical: 15,
@@ -105,7 +119,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   footerItemText: {
-    color: "#333",
     fontSize: 15,
     fontFamily: "Roboto-Medium",
     marginLeft: 10,

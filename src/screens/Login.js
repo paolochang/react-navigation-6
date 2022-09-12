@@ -7,6 +7,8 @@ import {
   View,
 } from "react-native";
 import React from "react";
+import { useTheme } from "@react-navigation/native";
+import DismissKeyboard from "../components/DismissKeyboard";
 import InputField from "../components/InputField";
 import CustomButton from "../components/CustomButton";
 import LoginOption from "../components/LoginOption";
@@ -15,10 +17,14 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import LoginSVG from "../../assets/images/misc/login.svg";
 
 export default function Login({ navigation }) {
+  const { colors } = useTheme();
+
   const keyboardVerticalOffset = Platform.OS === "ios" ? 10 : 0;
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView
+      style={[styles.container, { backgroundColor: colors.background }]}
+    >
       <KeyboardAvoidingView
         behavior="position"
         keyboardVerticalOffset={keyboardVerticalOffset}
@@ -27,17 +33,21 @@ export default function Login({ navigation }) {
           <View style={styles.imageBlock}>
             <LoginSVG style={styles.image} height={300} width={300} />
           </View>
-          <Text style={styles.title}>Login</Text>
+          <Text style={[styles.title, { color: colors.text }]}>Login</Text>
 
           <InputField
             label="Email"
-            icon={<Ionicons name="at" size={20} color="#666" />}
+            icon={<Ionicons name="at" size={20} color={colors.text} />}
             keyboardType="email-address"
           />
           <InputField
             label="Password"
             icon={
-              <Ionicons name="ios-lock-closed-outline" size={20} color="#666" />
+              <Ionicons
+                name="ios-lock-closed-outline"
+                size={20}
+                color={colors.text}
+              />
             }
             inputType="password"
             fieldButtonLabel="Forgot?"
@@ -49,7 +59,7 @@ export default function Login({ navigation }) {
           <LoginOption register={false} />
 
           <View style={styles.registerBlock}>
-            <Text>New to the app?</Text>
+            <Text style={{ color: colors.text }}>New to the app?</Text>
             <TouchableOpacity onPress={() => navigation.navigate("Register")}>
               <Text style={styles.registerText}>Register</Text>
             </TouchableOpacity>
@@ -78,7 +88,6 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontFamily: "Roboto-Medium",
     fontWeight: "500",
-    color: "#333",
     marginBottom: 30,
   },
   registerBlock: {
