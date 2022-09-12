@@ -3,7 +3,7 @@ import React from "react";
 import { windowWidth } from "../utils/Dimensions";
 
 export default function ListItem(props) {
-  const { title, subtitle, poster, isFree, price } = props;
+  const { title, subtitle, poster, isFree, price, onPress } = props;
   return (
     <View style={styles.container}>
       <View style={styles.infobox}>
@@ -15,7 +15,7 @@ export default function ListItem(props) {
           </Text>
         </View>
       </View>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={onPress}>
         <Text style={styles.buttonText}>
           {isFree === "No" ? price : "Play"}
         </Text>

@@ -1,7 +1,7 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import CustomDrawer from "../components/CustomDrawer";
-import Home from "../screens/Home";
+import TabNavigator from "./TabNavigator";
 import Profile from "../screens/Profile";
 import Messages from "../screens/Messages";
 import Moments from "../screens/Moments";
@@ -24,7 +24,7 @@ export default function AppStack() {
     >
       <Drawer.Screen
         name="Home"
-        component={Home}
+        component={TabNavigator}
         options={{
           drawerIcon: ({ color }) => (
             <Ionicons name="home-outline" size={22} color={color} />
