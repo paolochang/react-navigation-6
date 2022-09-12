@@ -1,4 +1,3 @@
-import { useCallback, useEffect } from "react";
 import {
   SafeAreaView,
   StyleSheet,
@@ -6,45 +5,19 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { useFonts } from "expo-font";
-import * as SplashScreen from "expo-splash-screen";
 import GamingImg from "../../assets/gaming.svg";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
-export default function Main({ navigation }) {
-  let [fontsLoaded] = useFonts({
-    "Roboto-Medium": require("../../assets/fonts/Roboto-Medium.ttf"),
-    "Roboto-MediumItalic": require("../../assets/fonts/Roboto-MediumItalic.ttf"),
-    "Inter-Bold": require("../../assets/fonts/Inter-Bold.ttf"),
-  });
-
-  useEffect(() => {
-    async function prepare() {
-      await SplashScreen.preventAutoHideAsync();
-    }
-
-    prepare();
-  }, []);
-
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded]);
-
-  if (!fontsLoaded) {
-    return null;
-  }
-
+export default function Onboarding({ navigation }) {
   return (
-    <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
+    <SafeAreaView style={styles.container} /*onLayout={onLayoutRootView}*/>
       <View>
         <Text style={styles.title}>React Navigation 6</Text>
       </View>
       <GamingImg style={styles.image} width={300} height={300} />
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate("Home")}
+        onPress={() => navigation.navigate("Login")}
       >
         <Text style={styles.buttonText}>Let's Begin</Text>
         <MaterialIcons name="arrow-forward-ios" size={22} color="#fff" />
