@@ -1,11 +1,14 @@
-import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { useTheme } from "@react-navigation/native";
 
 export default function GameDetails({ navigation, route }) {
+  const { colors } = useTheme();
+
   return (
     <View style={styles.container}>
-      <Text>GameDetails</Text>
-      <Text>{route.params?.title}</Text>
+      <Text style={{ color: colors.text }}>GameDetails</Text>
+      <Text style={{ color: colors.text }}>{route.params?.title}</Text>
     </View>
   );
 }

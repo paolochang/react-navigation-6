@@ -11,14 +11,17 @@ import {
 import InputField from "../components/InputField";
 import CustomButton from "../components/CustomButton";
 import LoginOption from "../components/LoginOption";
+import { useTheme } from "@react-navigation/native";
 // import DatePicker from 'react-native-date-picker'
 
 import Ionicons from "react-native-vector-icons/Ionicons";
 import RegistrationSVG from "../../assets/images/misc/registration.svg";
+import { color } from "react-native-reanimated";
 
 export default function Register({ navigation }) {
   const keyboardVerticalOffset = Platform.OS === "ios" ? 30 : 0;
 
+  const { colors } = useTheme();
   // const [date, setDate] = useState(new Date());
   // const [open, setOpen] = useState(false);
   // const [dobLabel, setDobLabel] = useState("Date of Birth");
@@ -33,30 +36,40 @@ export default function Register({ navigation }) {
           <View style={styles.imageBlock}>
             <RegistrationSVG style={styles.image} height={300} width={300} />
           </View>
-          <Text style={styles.title}>Register</Text>
+          <Text style={[styles.title, { color: colors.text }]}>Register</Text>
 
           <LoginOption register={true} />
 
           <InputField
             label="Full Name"
-            icon={<Ionicons name="person-outline" size={20} color="#666" />}
+            icon={
+              <Ionicons name="person-outline" size={20} color={colors.text} />
+            }
           />
           <InputField
             label="Email"
-            icon={<Ionicons name="at" size={20} color="#666" />}
+            icon={<Ionicons name="at" size={20} color={colors.text} />}
             keyboardType="email-address"
           />
           <InputField
             label="Password"
             icon={
-              <Ionicons name="ios-lock-closed-outline" size={20} color="#666" />
+              <Ionicons
+                name="ios-lock-closed-outline"
+                size={20}
+                color={colors.text}
+              />
             }
             inputType="password"
           />
           <InputField
             label="Confirm Password"
             icon={
-              <Ionicons name="ios-lock-closed-outline" size={20} color="#666" />
+              <Ionicons
+                name="ios-lock-closed-outline"
+                size={20}
+                color={colors.text}
+              />
             }
             inputType="password"
           />
@@ -97,7 +110,7 @@ export default function Register({ navigation }) {
           <CustomButton label="Register" onPress={() => {}} />
 
           <View style={styles.loginBlock}>
-            <Text>Already registered?</Text>
+            <Text style={{ color: colors.text }}>Already registered?</Text>
             <TouchableOpacity onPress={() => navigation.goBack()}>
               <Text style={styles.loginText}>Login</Text>
             </TouchableOpacity>
@@ -126,7 +139,6 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontFamily: "Roboto-Medium",
     fontWeight: "500",
-    color: "#333",
     marginBottom: 30,
   },
   datepickerBlock: {

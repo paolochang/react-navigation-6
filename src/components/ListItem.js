@@ -1,16 +1,22 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { windowWidth } from "../utils/Dimensions";
+import { useTheme } from "@react-navigation/native";
 
 export default function ListItem(props) {
   const { title, subtitle, poster, isFree, price, onPress } = props;
+  const { colors } = useTheme();
+
   return (
     <View style={styles.container}>
       <View style={styles.infobox}>
         <Image source={poster} style={styles.image} />
         <View style={styles.contents}>
-          <Text style={styles.title}>{title}</Text>
-          <Text style={styles.subtitle} numberOfLines={1}>
+          <Text style={[styles.title, { color: colors.text }]}>{title}</Text>
+          <Text
+            style={[styles.subtitle, { color: colors.text }]}
+            numberOfLines={1}
+          >
             {subtitle}
           </Text>
         </View>
@@ -46,12 +52,10 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   title: {
-    color: "#333",
     fontSize: 14,
     fontFamily: "Roboto-Medium",
   },
   subtitle: {
-    color: "#333",
     fontSize: 14,
     fontFamily: "Roboto-Medium",
     textTransform: "uppercase",

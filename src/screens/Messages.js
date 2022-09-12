@@ -1,10 +1,13 @@
-import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { useTheme } from "@react-navigation/native";
 
 export default function Messages() {
+  const { colors } = useTheme();
+
   return (
     <View style={styles.container}>
-      <Text>Messages</Text>
+      <Text style={{ color: colors.text }}>Messages</Text>
     </View>
   );
 }
