@@ -33,7 +33,7 @@ export default function Home({ navigation }) {
       <ScrollView style={styles.wrapper}>
         <View style={styles.header}>
           <Text style={styles.headerText}>Hello John Doe</Text>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
+          <TouchableOpacity onPress={() => navigation.openDrawer()}>
             <ImageBackground
               source={require("../../assets/images/user-profile.jpeg")}
               style={styles.profile}
