@@ -75,9 +75,31 @@ export default function Home({ navigation }) {
           />
         </View>
         {gamesTab == 1 &&
-          freeGames.map((game) => <ListItem key={game.id} {...game} />)}
+          freeGames.map((game) => (
+            <ListItem
+              key={game.id}
+              {...game}
+              onPress={() =>
+                navigation.navigate("GameDetails", {
+                  id: game.id,
+                  title: game.title,
+                })
+              }
+            />
+          ))}
         {gamesTab == 2 &&
-          paidGames.map((game) => <ListItem key={game.id} {...game} />)}
+          paidGames.map((game) => (
+            <ListItem
+              key={game.id}
+              {...game}
+              onPress={() =>
+                navigation.navigate("GameDetails", {
+                  id: game.id,
+                  title: game.title,
+                })
+              }
+            />
+          ))}
       </ScrollView>
     </SafeAreaView>
   );
